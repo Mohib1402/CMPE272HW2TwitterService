@@ -13,13 +13,13 @@
     </form>
 
     <form action="/retrieve_post" method="post">
-        <button type="submit">Retrieve</button>
+        <button type="submit">Retrieve All</button>
     </form>
 
     <h2>Current Posts:</h2>
     {% for post in posts %}
         <div id="result">
-            <p>{{ post.content }}</p>
+            <p>{{ post.content | safe}}</p>
             <form action="/delete_post" method="post">
                 <input type="hidden" name="post_id" value="{{ post.id }}">
                 <button type="submit">Delete</button>
