@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Service</title>
+</head>
+<body>
+    <h1>Twitter Service</h1>
+    <form action="/create_post" method="post">
+        <input type="text" name="status" placeholder="Enter the tweet" required>
+        <button type="submit">Post</button>
+    </form>
+
+    <form action="/retrieve_post" method="post">
+        <button type="submit">Retrieve</button>
+    </form>
+
+    <h2>Current Posts:</h2>
+    {% for post in posts %}
+        <div id="result">
+            <p>{{ post.content }}</p>
+            <form action="/delete_post" method="post">
+                <input type="hidden" name="post_id" value="{{ post.id }}">
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+    {% endfor %}
+</body>
+</html>
